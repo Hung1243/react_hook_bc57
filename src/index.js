@@ -10,6 +10,11 @@ import { store } from "./redux/store";
 import UseStateDemo from "./pages/hooks/UseStateDemo";
 import ChangeProfile from "./pages/hooks/ExUseState/ChangeProfile";
 import UseEffect_DidMount from "./pages/hooks/UseEffectDemo/UseEffect_DidMount";
+import UseEffect_DidUpdate from "./pages/hooks/UseEffectDemo/UseEffect_DidUpdate";
+import UseEffect_UnMount from "./pages/hooks/UseEffectDemo/UseEffect_UnMount";
+import ExChatDemo from "./pages/hooks/ExHookRedux/ExChatDemo";
+import ExChangeFontSize from "./pages/hooks/ExHookRedux/ExChangeFontSize";
+import CRUDProduct from "./pages/hooks/ExHookRedux/CRUDProduct";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -28,6 +33,20 @@ root.render(
               path="use-effect-did-mount"
               element={<UseEffect_DidMount />}
             ></Route>
+            <Route
+              path="use-effect-did-update"
+              element={<UseEffect_DidUpdate />}
+            ></Route>
+            <Route
+              path="use-effect-unmount"
+              element={<UseEffect_UnMount />}
+            ></Route>
+            <Route path="use-redux-demo-chat" element={<ExChatDemo />}></Route>
+            <Route
+              path="use-redux-demo-change-fontsize"
+              element={<ExChangeFontSize />}
+            ></Route>
+            <Route path="use-redux-crud" element={<CRUDProduct />}></Route>
             <Route path="*" element={<Navigate to="" />}></Route>
           </Route>
         </Routes>

@@ -33,10 +33,10 @@ const UseEffect_DidMount = () => {
         {arrProduct.map((prod) => {
           return (
             <div className="col-md-3">
-              <div className="card" key={prod.id}>
+              <div className="card my-2" key={prod.id}>
                 <img src={prod.image} alt="..." />
                 <div className="card-body">
-                  <h3>{prod.name}</h3>
+                  <h3 className="fs-6">{prod.name}</h3>
                   <p>{prod.price} $</p>
                   <button className="btn btn-outline-dark">
                     <i className="fa fa-cart-plus"></i>Add to cart

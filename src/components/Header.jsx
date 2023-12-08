@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-      <NavLink className="navbar-brand" href="#">
+      <NavLink className="navbar-brand" to="/">
         React Hook
       </NavLink>
       <button
@@ -48,6 +48,38 @@ const Header = () => {
               </NavLink>
               <NavLink className="dropdown-item" to="use-effect-did-mount">
                 Use Effect DidMount
+              </NavLink>
+              <NavLink className="dropdown-item" to="use-effect-did-update">
+                Use Effect DidUpdate
+              </NavLink>
+              <NavLink className="dropdown-item" to="use-effect-unmount">
+                Use Effect UnMount
+              </NavLink>
+            </div>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Redux Hook
+            </a>
+            <div className="dropdown-menu" aria-labelledby="dropdownId">
+              <NavLink className="dropdown-item" to="use-redux-demo-chat">
+                Demo chat
+              </NavLink>
+              <NavLink
+                className="dropdown-item"
+                to="use-redux-demo-change-fontsize"
+              >
+                Demo change fontsize
+              </NavLink>
+              <NavLink className="dropdown-item" to="use-redux-crud">
+                Form Product
               </NavLink>
             </div>
           </li>
