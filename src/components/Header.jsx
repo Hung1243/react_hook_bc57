@@ -55,6 +55,15 @@ const Header = () => {
               <NavLink className="dropdown-item" to="use-effect-unmount">
                 Use Effect UnMount
               </NavLink>
+              <NavLink className="dropdown-item" to="use-callback">
+                Use Call Back
+              </NavLink>
+              <NavLink className="dropdown-item" to="use-memo">
+                Use Memo
+              </NavLink>
+              <NavLink className="dropdown-item" to="use-ref">
+                Use Ref
+              </NavLink>
             </div>
           </li>
           <li className="nav-item dropdown">
@@ -80,6 +89,23 @@ const Header = () => {
               </NavLink>
               <NavLink className="dropdown-item" to="use-redux-crud">
                 Form Product
+              </NavLink>
+            </div>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Lib hook
+            </a>
+            <div className="dropdown-menu" aria-labelledby="dropdownId">
+              <NavLink className="dropdown-item" to="use-formik">
+                Formik
               </NavLink>
             </div>
           </li>

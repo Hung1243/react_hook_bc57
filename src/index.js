@@ -15,6 +15,10 @@ import UseEffect_UnMount from "./pages/hooks/UseEffectDemo/UseEffect_UnMount";
 import ExChatDemo from "./pages/hooks/ExHookRedux/ExChatDemo";
 import ExChangeFontSize from "./pages/hooks/ExHookRedux/ExChangeFontSize";
 import CRUDProduct from "./pages/hooks/ExHookRedux/CRUDProduct";
+import HookUseCallBack from "./pages/hooks/ExHookUseCallBack/HookUseCallBack";
+import ExHookUseMemo from "./pages/hooks/ExHookUseMemo/ExHookUseMemo";
+import ExHookUseRef from "./pages/hooks/ExHookUseRef/ExHookUseRef";
+import ExHookFormik from "./pages/hooks/ExHookFormik/ExHookFormik";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -47,6 +51,11 @@ root.render(
               element={<ExChangeFontSize />}
             ></Route>
             <Route path="use-redux-crud" element={<CRUDProduct />}></Route>
+            <Route path="use-callback" element={<HookUseCallBack />}></Route>
+            <Route path="use-memo" element={<ExHookUseMemo />}></Route>
+            <Route path="use-ref" element={<ExHookUseRef />}></Route>
+            <Route path="use-formik" element={<ExHookFormik />}></Route>
+
             <Route path="*" element={<Navigate to="" />}></Route>
           </Route>
         </Routes>
