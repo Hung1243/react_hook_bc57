@@ -19,6 +19,13 @@ import HookUseCallBack from "./pages/hooks/ExHookUseCallBack/HookUseCallBack";
 import ExHookUseMemo from "./pages/hooks/ExHookUseMemo/ExHookUseMemo";
 import ExHookUseRef from "./pages/hooks/ExHookUseRef/ExHookUseRef";
 import ExHookFormik from "./pages/hooks/ExHookFormik/ExHookFormik";
+import Profile from "./pages/Profile";
+import ForgotPassword from "./pages/ForgotPassword";
+import Login from "./pages/Login";
+import Detail from "./pages/Detail";
+import Search from "./pages/Search";
+import TrangChu from "./pages/TrangChu";
+import AntDemo from "./pages/AntDemo";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -55,6 +62,15 @@ root.render(
             <Route path="use-memo" element={<ExHookUseMemo />}></Route>
             <Route path="use-ref" element={<ExHookUseRef />}></Route>
             <Route path="use-formik" element={<ExHookFormik />}></Route>
+            <Route path="profile" element={<Profile />}></Route>
+            <Route path="forgotpassword" element={<ForgotPassword />}></Route>
+            <Route path="login" element={<Login />}></Route>
+            <Route path="detail">
+              <Route path=":id" element={<Detail />}></Route>
+            </Route>
+            <Route path="search" element={<Search />}></Route>
+            <Route path="trangchu" element={<TrangChu />}></Route>
+            <Route path="antd-demo" element={<AntDemo />}></Route>
 
             <Route path="*" element={<Navigate to="" />}></Route>
           </Route>

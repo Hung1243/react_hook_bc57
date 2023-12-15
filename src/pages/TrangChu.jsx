@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import UseGetApi from "../CustomHooks/UseGetApi";
 import { NavLink } from "react-router-dom";
 
-const Home = () => {
-  const [arrProduct, setArrProduct] = useState([]);
-  console.log("arrProduct", arrProduct);
-  const getAllProductApi = async () => {
-    const res = await axios({
-      url: "https://shop.cyberlearn.vn/api/Product",
-      method: "GET",
-    });
-    setArrProduct(res.data.content);
-  };
-  useEffect(() => {
-    //gọi api trong useEffect didmount
-    getAllProductApi();
-  }, []);
+const TrangChu = () => {
+  const data = UseGetApi("https://shop.cyberlearn.vn/api/Product");
+  const arrProduct = data.content;
   return (
     <div className="container">
       <h3>Home</h3>
       <div className="row">
-        {arrProduct.map((prod) => {
+        {arrProduct?.map((prod) => {
           return (
             <div className="col-4 mt-2" key={prod.id}>
               <NavLink
@@ -32,7 +21,10 @@ const Home = () => {
                 <div className="card-body">
                   <h3>{prod.name}</h3>
                   <p>{prod.price}</p>
-                  <NavLink className="btn btn-outline-dark"   to={`/detail/${prod.id}`}>
+                  <NavLink
+                    className="btn btn-outline-dark"
+                    to={`/detail/${prod.id}`}
+                  >
                     View Detail
                   </NavLink>
                 </div>
@@ -45,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TrangChu;
