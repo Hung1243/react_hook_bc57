@@ -42,6 +42,16 @@ const Header = () => {
               Ant Design Demo
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="table-antd">
+              Table antd
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="product-management">
+              Product Management
+            </NavLink>
+          </li>
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
