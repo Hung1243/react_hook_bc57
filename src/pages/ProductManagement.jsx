@@ -1,48 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import { Button, Space, Table } from "antd";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import {
-  getAllProductApiAction,
-  getAllProductThunkAction,
-  setArrayProductAction,
-} from "../redux/Reducer/ProductReducer";
+// import { getAllProductApiAction } from "../redux/Reducers/ProductReducer";
+import { getAllProductApiAction } from "../redux/Reducer/ProductReducer";
+
+//Dữ liệu bên ngoài component
 
 const ProductManagement = () => {
+  //Nội dung trong component
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
-  const dispatch = useDispatch();
-
-  //lấy dữ liệu từ redux về
+  //Lấy dữ liệu từ redux về
   const { arrProduct } = useSelector((state) => state.productReducer);
-
-  //call api
+  const dispatch = useDispatch();
   const getAllProduct = async () => {
+    //Sau khi có giá trị từ api thì dispatch giá trị lên reducer
     // const res = await axios({
-    //   url: "https://shop.cyberlearn.vn/api/Product",
-    //   method: "GET",
+    //   url:'https://shop.cyberlearn.vn/api/Product',
+    //   method:'GET'
     // });
     // const action = setArrayProductAction(res.data.content);
-    // dispatch(action);
     /*
       action-thường: {type:'',payload: ...}
       action-thunk: (dispatch) => {
         //xử lý abc để có dữ liệu và dùng dispatch đưa lên redux
       }
     */
+    //Cách 1: create action thunk (tự code)
+    const action = getAllProductApiAction();
+    dispatch(action);
+    //Cách 2: create asynction (thư viện)
+    // const action = getAllProductAsyncThunkAction();
+    // dispatch(action);
+  };
 
-    //cách 1: create action thunk (tự code)
-    // dispatch(getAllProductApiAction);
-    const action = getAllProductApiAction ();
-    dispatch (action)
-    //cách 2: create asyncaction (thư viện)
-//     const action = getAllProductThunkAction();
-//     dispatch(action);
-//   };
   useEffect(() => {
+    //Gọi api
     getAllProduct();
   }, []);
+
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
     setFilteredInfo(filters);
@@ -51,39 +49,55 @@ const ProductManagement = () => {
 
   const columns = [
     {
-      title: "ID", //tiêu đề của từng column
+      title: "id", //Tiêu đề của từng column
       dataIndex: "id",
-      key: "id",
+      name: "id",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.id - b.id,
     },
     {
-      title: "Name", //tiêu đề của từng column
+      title: "name", //Tiêu đề của từng column
       dataIndex: "name",
-      key: "name",
+      name: "name",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.name.length - b.name.length,
-      onFilter: (value, record) => record.name.includes(value),
+      filters: [
+        {
+          text: "Joe",
+          value: "Joe",
+        },
+        {
+          text: "Category 1",
+          value: "Category 1",
+        },
+        {
+          text: "Category 2",
+          value: "Category 2",
+        },
+      ],
+      filterMode: "tree",
+      filterSearch: true,
+      onFilter: (value, record) => record.name.startsWith(value),
     },
     {
-      title: "Image",
+      title: "image", //Tiêu đề của từng column
       dataIndex: "image",
-      key: "image",
+      name: "image",
       render: function (text, record, index) {
-        // console.log("text", text);
-        // console.log("record", record);
-        // console.log("index", index);
+        // console.log('text',text);
+        // console.log('record',record);
+        // console.log('index',index);
         return (
           <div>
-            <img src={text} alt="..." width={100} height={100} />
+            <img src={record.image} alt="..." width={50} height={50} />
           </div>
         );
       },
     },
     {
-      title: "Size",
+      title: "size", //Tiêu đề của từng column
       dataIndex: "size",
-      key: "size",
+      name: "size",
       render: function (text, record, index) {
         const sizes = JSON.parse(text);
         return (
@@ -98,11 +112,11 @@ const ProductManagement = () => {
     {
       title: "Action",
       dataIndex: "action",
-      key: "action",
+      name: "action",
       render: (text, record, index) => {
         return (
           <div>
-            <NavLink to={`/detail/${record.id}`}>View Detail</NavLink>
+            <NavLink to={`/detail/${record.id}`}>View detail</NavLink>
           </div>
         );
       },
@@ -110,7 +124,7 @@ const ProductManagement = () => {
   ];
   return (
     <div className="container">
-      <h3>Product management</h3>
+      <h3>Product mangement </h3>
       <Table
         columns={columns}
         dataSource={arrProduct}
