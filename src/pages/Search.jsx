@@ -32,6 +32,11 @@ const Search = () => {
     setArrProduct(res.data.content);
   };
   useEffect(() => {
+    if (tukhoa == "") {
+      // tukhoa = searchParams.get("keyword");
+      formSearch.setFieldValue("keyword", setSearchParams.get("keyword"));
+    }
+
     getProductByKeyword();
   }, [tukhoa]);
   return (
@@ -47,6 +52,7 @@ const Search = () => {
               placeholder="keyword"
               name="keyword"
               onChange={formSearch.handleChange}
+              value={formSearch.keyword}
             />
             <label htmlFor="keyword">search</label>
           </div>
